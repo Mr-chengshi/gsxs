@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人信息</title>
+
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/info.js"></script>
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/info.css" rel="stylesheet">
+</head>
+<body>
+
+<nav></nav>
+<div class="content">
+    <div style="margin-top: 16px"></div>
+    <!--用户名区域-->
+    <div class="card">
+        <div class="card-body">
+            <div class="card-image">
+                <span>
+                    <img src="/images/user.png" class="img-circle">
+                </span>
+            </div>
+
+            <div class="card-meta">
+                <div class="card-meta-title">
+                    <div class="space">
+                        <div class="space-item">
+                            <h2 id="card-name">用户名</h2>
+                        </div>
+                        <div class="space-item">
+                            <span class="mark">V1</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-meta-description" id="card-introduction">暂无个人简介</div>
+            </div>
+        </div>
+    </div>
+    <div style="margin-top: 16px"></div>
+    <!--用户信息区域-->
+    <div class="card">
+        <div class="card-head">
+            <div class="card-head-wrapper">
+                <span>信息</span>
+            </div>
+            <div class="card-extra">
+                <button type="button" id="card-btn" class=" card-btn" data-toggle="modal" data-target="#myModal" >
+                    <span class="card-extra-image">
+                        <svg t="1649988779386" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2710" width="20" height="20"><path d="M179.2 870.4h665.6a25.6 25.6 0 1 1 0 51.2h-665.6a25.6 25.6 0 1 1 0-51.2z m198.6048-228.5568l203.1104-203.1616a25.6 25.6 0 0 1 36.1984 36.1984l-262.4512 262.4512a76.8 76.8 0 0 1-47.2576 22.1696l-131.8912 12.1856 12.1856-131.8912a76.8 76.8 0 0 1 22.1696-47.2576l457.5744-457.5744a76.8 76.8 0 0 1 108.544 0l36.2496 36.1984a76.8 76.8 0 0 1 0 108.5952L699.3408 392.704a25.6 25.6 0 0 1-36.1984-36.1984l40.448-40.4992-72.3968-72.448-325.8368 325.8368 72.448 72.448z m-36.1984 36.1984l-72.448-72.448-23.0912 23.1424a25.6 25.6 0 0 0-7.424 15.7696l-6.5024 70.5536 70.5536-6.5024a25.6 25.6 0 0 0 15.7696-7.424l23.1424-23.0912z m398.2336-398.2848l36.1984-36.1984a25.6 25.6 0 0 0 0-36.1984l-36.1984-36.1984a25.6 25.6 0 0 0-36.1984 0l-36.1984 36.1984 72.3968 72.3968z" fill="#1890ff" p-id="2711"></path></svg>
+                     </span>
+                    <span>编辑</span>
+                </button>
+            </div>
+        </div>
+        <hr/>
+        <div class="card-body">
+            <div class="card-descriptions">
+                <table>
+                    <tbody>
+                        <tr class="card-description-row">
+                            <td class="card-description-item">
+                                <div class="card-description-item-container">
+                                    <span class="card-description-item-label">
+                                        积分
+                                    </span>
+                                    <span class="card-description-item-data">0</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="card-description-row">
+                            <td class="card-description-item">
+                                <div class="card-description-item-container">
+                                    <span class="card-description-item-label" >
+                                        性别
+                                    </span>
+                                    <span class="card-description-item-data" id="card-sex">未设置</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="card-description-row">
+                            <td class="card-description-item">
+                                <div class="card-description-item-container">
+                                    <span class="card-description-item-label">
+                                        兴趣
+                                    </span>
+                                    <span class="card-description-item-data" id="card-interests">暂无</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="card-description-row">
+                            <td class="card-description-item">
+                                <div class="card-description-item-container">
+                                    <span class="card-description-item-label">
+                                        状态
+                                    </span>
+                                    <span class="card-description-item-data">暂无</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="card-description-row">
+                            <td class="card-description-item">
+                                <div class="card-description-item-container">
+                                    <span class="card-description-item-label">
+                                        邮箱
+                                    </span>
+                                    <span class="card-description-item-data" id="card-email">暂无</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="card-description-row">
+                            <td class="card-description-item">
+                                <div class="card-description-item-container">
+                                    <span class="card-description-item-label">
+                                        学号
+                                    </span>
+                                    <span class="card-description-item-data">暂无</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="card-description-row">
+                            <td class="card-description-item">
+                                <div class="card-description-item-container">
+                                    <span class="card-description-item-label">
+                                        身份证号
+                                    </span>
+                                    <span class="card-description-item-data">暂无</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!--模态框-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">修改信息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group ">
+                        <span class="input-description" >昵称：</span>
+                        <input type="text" id="input-name" class="form-control form-control-name" placeholder="最多12个字" style="width: 350px" maxlength="12">
+                        <div class="input-error-wrapper">
+                            <span class="form-control-input-error" id="form-control-input-error-name">请输入昵称</span>
+                        </div>
+                    </div>
+                    <div class="input-group ">
+                        <span class="input-description" >性别：</span>
+                        <div class="form-item-right">
+                            <label class="radio-wrapper">
+                                <input type="radio" class="radio-input" value="1" name="radio" id="man">
+                                <span class="radio-inner">男</span>
+                            </label>
+                            <label class="radio-wrapper">
+                                <input type="radio" class="radio-input" value="0" name="radio" id="woman">
+                                <span class="radio-inner">女</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-group ">
+                        <span class="input-description" >简介：</span>
+                        <input type="text" id="introduction" class="form-control" placeholder="请填写个人简介" style="width: 350px">
+                    </div>
+                    <div class="input-group ">
+                        <span class="input-description" >兴趣：</span>
+                        <input type="text" id="interests" class="form-control" placeholder="请填写个人兴趣" style="width: 350px">
+                    </div>
+                    <div class="input-group ">
+                        <span class="input-description" >邮箱：</span>
+                        <input type="text" id="email" class="form-control form-control-email" placeholder="" style="width: 350px">
+                        <div class="input-error-wrapper">
+                            <span class="form-control-input-error" id="form-control-input-error-email">请输入正确的邮箱</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default modal-btn" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="model-btn">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer></footer>
+
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link href="/css/login.css" rel="stylesheet">
+
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/login.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="nav">
+            <ul class="nav-ul">
+                <li><a href="index">首页</a></li>
+                <li><a href="#">关于我们</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content">
+
+            <div class="login_center">
+                <form action="/denglu" method="post">
+                    <div class="input">
+                        <label>
+                            <i class="img-user"></i>
+                        </label>
+                       <input type="text" name="username" id="username"><br/>
+                        <span id="xid_warn" style="display: none">用户名不能为空</span>
+                    </div>
+                    <div class="input">
+                        <label>
+                            <i class="img-password"></i>
+                        </label>
+                        <input type="password" name="password" id="password"><br/>
+                        <span id="password_warn" style="display: none">密码不能为空</span>
+                    </div>
+                    <div class="input">
+                        <input type="submit" value="登录" id="btn" class="btn btn-lg btn-primary">
+                    </div>
+                    <div class="register">
+                        <span><a href="register" id="register-btn">免费注册</a></span>
+                    </div>
+                </form>
+            </div>
+    </div>
+
+    <footer></footer>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+span{
+    color:red;
+    position: absolute;
+    font-size: 15px;
+    margin: 5px ;
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+
+}
+body{
+    margin: 0;
+    background-color: #f5f5f5;
+}
+
+.content{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction:column;
+    background-image: url(../images/bj.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    width: 80%;
+    height: 743px;
+}
+
+
+.login_center{
+    border-radius: 10px;
+    width: 457px;
+    height: 330px;
+    background-color: rgba(255,255,255,0.9);
+}
+
+input{
+    height: 40px;
+    width: 300px;
+    opacity: 0.5;
+    outline: 0;
+    font-size: 24px;
+    border-style: none none solid none;
+
+}
+
+.input{
+    display: inline-block;
+    margin: 50px 70px 0 80px;
+}
+label{
+    position: absolute;
+
+
+}
+.img-user{
+    background-image: url("http://localhost:8080/images/user.png");
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    background-size: contain;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    opacity: 0.5;
+}
+.img-password{
+    background-image: url("http://localhost:8080/images/Password.png");
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    background-size: contain;
+    position: absolute;
+    top: 1px;
+    right: 3px;
+    opacity: 0.5;
+}
+#btn{
+    opacity: 1;
+}
+
+.register{
+    display: flex;
+    justify-content:flex-end;
+    margin: 10px auto;
+    width: 100%;
+    height: auto;
+}
+.register span{
+    display: inline-block;
+    color: #c3c3c3;
+    margin: 10px 30px 0 0;
+}
+a:hover{
+    text-decoration: none;
+}
+

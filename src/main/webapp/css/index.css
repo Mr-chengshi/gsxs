@@ -1,0 +1,40 @@
+body{
+    margin: 0 ;
+    padding: 0;
+}
+
+
+
+.banner{
+    margin: 0 auto;
+    /*width: 960px;height: 540px;*/
+    width: 1200px;height: 600px;
+    margin-top: 50px;
+}
+.tb-list>ul{
+    margin: 0;
+    padding: 0;
+}
+.function-show{
+    position: relative;
+    margin: 100px auto;
+    width: 80%;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content:space-around;
+    align-content:space-around;
+
+}
+.function-show-box{
+    display: inline-block;
+    margin: 0;
+    text-align: center;
+    flex-shrink:1;
+}
+.function-show p{
+    margin: 20px 0;
+}
+.function-show-imgStyle{
+    width:80px;
+    height: 80px;
+}

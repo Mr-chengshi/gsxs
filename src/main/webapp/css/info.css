@@ -1,0 +1,109 @@
+html,body{
+    background-color: #f5f5f5;
+}
+body{
+    /*overflow: hidden;*/
+}
+
+.content{
+    padding:1px 50px;
+    min-height: 500px;
+    background-color: #f5f5f5;
+}
+.card{
+    min-height: 100px;
+    padding: 24px;
+    background-color: white;
+}
+.card-image{
+    display: inline-block;
+    border-radius: 50%;
+    background-color: #f5f5f5;
+}
+.card-meta{
+    display: inline-block;
+    margin-left: 30px;
+}
+.space{
+    display: flex;
+    align-items:baseline;
+}
+.space-item{}
+.mark{
+    border: 1px solid orange;
+    margin: 0 20px;
+    font-size: 15px;
+}
+.card-meta-description{
+    max-width: 500px;
+}
+.card-head{
+    margin-bottom: 1px;
+    background-color: white;
+}
+.card-head-wrapper{
+    font-size: 20px;
+    display: inline-block;
+}
+.card-description-item-container span{
+    display: inline-block;
+    font-size: 15px;
+    width: 100px;
+}
+.card-description-item-container{
+    padding: 20px;
+}
+.card-extra{
+    display: flex;
+    float: right;
+
+    margin-right: 30px;
+}
+.card-extra-image{
+    display: inline-block;
+    font-size: 0;
+    margin-right: 5px;
+}
+.card-btn{
+    color: #1890ff;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    outline: none;
+    font-size: 16px;
+    display: flex;
+    align-items:center;
+}
+.modal-btn{
+    outline: none;
+}
+.input-group{
+    margin: 20px 0;
+
+}
+.input-description{
+    display: table-cell;
+    font-size: 14px;
+    vertical-align:middle;
+    text-align: center;
+    padding: 0 50px 0 20px;
+}
+.radio-inner{
+    margin: 0 10px;
+    font-size: 14px;
+}
+.radio-input{
+    width: 14px;
+    height: 14px;
+}
+.input-error-wrapper{
+    height: auto;
+    min-height: 14px;
+    position: absolute;
+    bottom: -20px;
+
+}
+.form-control-input-error{
+    color: red;
+    display: none;
+}
