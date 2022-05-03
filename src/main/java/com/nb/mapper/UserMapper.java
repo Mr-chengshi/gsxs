@@ -16,6 +16,9 @@ public interface UserMapper {
     List<User> findall();
 
     //    根据id查
-    User findbyid(User user);
+    User findbyid(String username);
+
+    //更新用户信息
+    Boolean updateById(User user);
 
 }

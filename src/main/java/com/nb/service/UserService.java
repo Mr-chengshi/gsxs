@@ -3,7 +3,6 @@ package com.nb.service;
 import com.nb.domain.User;
 
 import java.io.IOException;
-import java.util.List;
 
 public interface UserService {
 
@@ -14,5 +13,7 @@ public interface UserService {
     public boolean register(User user) throws IOException;
 
 
-    public List<User> findall() throws IOException;
+    public  User selectUser(String xid);
+
+    Boolean updateUser(User user);
 }

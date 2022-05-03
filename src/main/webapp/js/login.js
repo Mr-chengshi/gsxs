@@ -1,7 +1,7 @@
 
 
 $(function () {
-    $("#id").blur(function (){
+    $("#xid").blur(function (){
 
         let id = this.value;
         if (id){

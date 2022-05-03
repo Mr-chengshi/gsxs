@@ -20,22 +20,6 @@ http://www.springframework.org/schema/context https://www.springframework.org/sc
         <property name="suffix" value=".html"/>
     </bean>
 
-    <!-- 开启mvc注解驱动 -->
-<!--    <mvc:annotation-driven>-->
-<!--        <mvc:message-converters>-->
-<!--            &lt;!&ndash; 处理响应中文内容乱码 &ndash;&gt;-->
-<!--            <bean class="org.springframework.http.converter.StringHttpMessageConverter">-->
-<!--                <property name="defaultCharset" value="UTF-8" />-->
-<!--                <property name="supportedMediaTypes">-->
-<!--                    <list>-->
-<!--                        <value>text/html</value>-->
-<!--                        <value>application/json</value>-->
-<!--                    </list>-->
-<!--                </property>-->
-<!--            </bean>-->
-<!--        </mvc:message-converters>-->
-<!--    </mvc:annotation-driven>-->
-
 
     <!--配置视图控制器-->
     <mvc:view-controller path="/" view-name="login"/>
@@ -43,6 +27,50 @@ http://www.springframework.org/schema/context https://www.springframework.org/sc
 
     <!--    开启mvc注解驱动-->
     <mvc:annotation-driven />
+
+
+    <!-- 注解的适配器和映射器 -->
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <!--@ResponseBody 中文响应乱码 -->
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>
+                            text/plain;charset=UTF-8
+                        </value>
+                        <value>
+                            text/html;charset=UTF-8
+                        </value>
+
+                        <value>
+                            application/json;charset=UTF-8
+                        </value>
+                        <value>
+                            application/x-www-form-urlencoded;charset=UTF-8
+                        </value>
+                    </list>
+                </property>
+            </bean>
+            <!-- JSON中文请求乱码及解决
+        HttpMediaTypeNotAcceptableException: Could not find acceptable representation  异常信息-->
+            <bean id="jacksonMessageConverter"
+                  class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>
+                            application/json;charset=UTF-8
+                        </value>
+                        <value>
+                            application/x-www-form-urlencoded;charset=UTF-8
+                        </value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+
 
 
 </beans>

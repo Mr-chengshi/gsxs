@@ -3,18 +3,45 @@
 <mapper namespace="com.nb.mapper.UserMapper">
 
 
+
     <select id="denglu" parameterType="user" resultType="user">
-        select * from user where username=#{username} and password=#{password}
+        select * from user where xid=#{xid} and password=#{password}
     </select>
 
     <insert id="zhuce" parameterType="user">
-        insert into user values (#{id},#{username},#{password},#{sid})
+        insert into user values (#{xid},#{password},#{sid})
     </insert>
 
     <select id="findall" resultType="user">
         select * from user
     </select>
 
+    <select id="findbyid" resultType="user">
+        select * from user where xid=#{xid}
+    </select>
+
+    <update id="updateById" >
+        update user
+        <set>
+            <if test="username!=null">
+                username = #{username},
+            </if>
+            <if test="sex!=null">
+                sex = #{sex},
+            </if>
+            <if test="introduction!=null">
+                introduction = #{introduction},
+            </if>
+            <if test="interests!=null">
+                interests = #{interests},
+            </if>
+            <if test="email!=null">
+                email = #{email},
+            </if>
+        </set>
+        where xid=#{xid};
+
+    </update>
 
 
 </mapper>

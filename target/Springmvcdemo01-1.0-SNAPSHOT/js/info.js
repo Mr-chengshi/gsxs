@@ -11,6 +11,7 @@ $(function () {
             $('#form-control-input-error-name').fadeOut();
         }
     })
+
     //判断是否email格式
     function judgeEmail(email) {
         if(email != "") {
@@ -34,10 +35,10 @@ $(function () {
 
         $('#input-name').val($('#card-name').text());
 
-        if ($('#card-sex').text()=="男"){
+        if ($('#card-sex').text()==="男"){
             $('#man').attr({"checked":true});
         }
-        if($('#card-sex').text()=="女"){
+        if($('#card-sex').text()==="女"){
             $('#woman').attr({"checked":true});
         }
         $('#introduction').val($('#card-introduction').text());
@@ -47,23 +48,29 @@ $(function () {
 
     })
 
-    //更新信息
+    //点击模态框按钮时更新信息
     $('#model-btn').click(function (){
         let flag=true;
-        //获取值
-        let name = $('#input-name').val();//""
+        //获取输入框中的值
+        let username = $('#input-name').val();//""
         let sex = $("input[name='radio']:checked").val();//undefined
         let introduction = $('#introduction').val();//""
         let interests = $('#interests').val( );
         let email = $('#email').val();
+        let xid = $('#card-xid').html();
 
 
-        if (name==""){
+        if (username===""){
             flag=false;
         }
+        if (sex==="1"){
+            sex='男';
+        }else{
+            sex='女';
+        }
+        console.log(sex)
 
-
-        //退出模态框
+        //退出模态框时，是否发送修改请求
         if (judgeEmail(email)&&flag){
 
             //发送请求
@@ -71,38 +78,36 @@ $(function () {
                 type:'post',
                 url:'http://localhost:8080/modifyInfo',
                 data:{
-                    name:name,
+                    username:username,
                     sex:sex,
                     introduction:introduction,
                     interests:interests,
-                    email:email
+                    email:email,
+                    xid:xid
                 },
                 success:function (data) {
-
-                    if (data=="true"){
+                    if (JSON.parse(data).boolean){
 
                         //修改数据
-                        if (name!=""){
-                            $('#card-name').text(name);
+                        if (username!==""){
+                            $('#card-name').text(username);
                         }
-                        if (sex!=undefined){
-                            if (sex==0){
-                                $('#card-sex').text('女');
-                            }else {
-                                $('#card-sex').text('男');
-                            }
+                        if (sex!==undefined){
+                            $('#card-sex').text(sex);
                         }
-                        if (introduction!=""){
+                        if (introduction!==""){
                             $('#card-introduction').text(introduction);
                         }
-                        if (interests!=""){
+                        if (interests!==""){
                             $('#card-interests').text(interests);
                         }
-                        if (email!=""){
+                        if (email!==""){
                             $('#card-email').text(email);
                         }
+                        //更新导航栏
+                        $('#nav-user').html("hello"+username+"~ ~");
                     }else{
-                        console.log(data);
+                        console.log(JSON.parse(data).bool);
                         alert("更新失败");
                     }
 
@@ -113,6 +118,25 @@ $(function () {
         }
 
 
+
+    })
+
+    //加载界面时，从session中取出信息加载到页面上
+    $.ajax({
+        type:'post',
+        url:"http://localhost:8080/getUserInfo",
+        success:function (data) {
+            let parse = JSON.parse(data);
+            $('#card-name').html(parse.username);
+            $('#card-introduction').html(parse.introduction)
+            $('#card-score').html(parse.score);
+            $('#card-sex').html(parse.sex);
+            $('#card-interests').html(parse.interests);
+            $('#card-status').html(parse.status);
+            $('#card-email').html(parse.email);
+            $('#card-xid').html(parse.xid);
+            $('#card-sid').html(parse.sid);
+        }
 
     })
 

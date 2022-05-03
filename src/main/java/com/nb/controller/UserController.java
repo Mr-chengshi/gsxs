@@ -1,10 +1,13 @@
 package com.nb.controller;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mysql.jdbc.log.Log;
 import com.nb.domain.User;
 import com.nb.service.impl.UserServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +23,8 @@ public class UserController {   //用来返回视图和数据
     private String denglu(User user , HttpSession session)throws Exception{
         if (userservice.login(user)){
         //登陆成功
-            session.setAttribute("user",user);
+            User user1 = userservice.selectUser(user.getXid());
+            session.setAttribute("user",user1);
             return "index";
 
         }else {
@@ -32,7 +36,8 @@ public class UserController {   //用来返回视图和数据
     @RequestMapping("/zhuce")
     private String zhuce(User user, HttpSession session)throws Exception{
         if (userservice.register(user)){
-            session.setAttribute("user",user);
+            User user1 = userservice.selectUser(user.getUsername());
+            session.setAttribute("user",user1);
             return "index";
         }else {
             return "register";
@@ -40,39 +45,42 @@ public class UserController {   //用来返回视图和数据
     }
 
 
-
-    @RequestMapping("/judgeUser")
-    private void judgeUser( HttpServletRequest request,HttpServletResponse response)throws Exception{
+    //判断用户是否存在
+    @RequestMapping(value = "/judgeUser")
+    @ResponseBody
+    private User judgeUser( HttpServletRequest request,HttpServletResponse response)throws Exception{
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
+        User user1 = userservice.selectUser(user.getXid());
         if (user!=null){
-            response.getWriter().write(user.getUsername());
+           return user1;
         }
+        else
+            return null;
 
     }
+    @RequestMapping("/getUserInfo")
+    @ResponseBody
+    private String getUserInfo(HttpSession session)throws Exception{
 
+        User user = (User)session.getAttribute("user");
+        String xid = user.getXid();
+        User user1 = userservice.selectUser(xid);
+        ObjectMapper objectMapper = new ObjectMapper();
+        String s = objectMapper.writeValueAsString(user1);
+        return s;
+    }
 
+    //修改个人信息
     @RequestMapping(value = "/modifyInfo" ,method = RequestMethod.POST)
-    private String modifyInfo(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse)throws Exception{
-
-        String name = httpServletRequest.getParameter("name");
-        String sex = httpServletRequest.getParameter("sex");
-        String introduction = httpServletRequest.getParameter("introduction");
-        String interests = httpServletRequest.getParameter("interests");
-        String email = httpServletRequest.getParameter("email");
-
-
-        System.out.println("-------------------------------------------------------------");
-        System.out.println(name);
-        System.out.println(sex);
-        System.out.println(introduction);
-        System.out.println(interests);
-        System.out.println(email);
-
-        httpServletResponse.getWriter().write("true");
-
-        return "info";
-
+    @ResponseBody
+    private String modifyInfo(User user)throws Exception{
+        System.out.println(user);
+        Boolean aBoolean = userservice.updateUser(user);
+        if (aBoolean)
+            return "{\"boolean\":\"true\"}";
+        else
+            return "{\"boolean\":\"false\"}";
     }
 
 

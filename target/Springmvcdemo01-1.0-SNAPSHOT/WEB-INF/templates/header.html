@@ -22,10 +22,9 @@
             type:'get',
             url:'http://localhost:8080/judgeUser',
             success:function (data) {
-                if (data!=""){
+                if (data!=null){
                     $(".login li").hide();
-                    var username=data;
-                    $(".login").html("<li><a href='/info' id='nav-user'>hello "+username+"~ ~</a></li>");
+                    $(".login").html("<li><a href='/info' id='nav-user'>hello "+data.username+"~ ~</a></li>");
                 }
             }
         })

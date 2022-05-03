@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class UserServiceImp implements UserService {
@@ -25,8 +26,6 @@ public class UserServiceImp implements UserService {
 
         User denglu = mapper.denglu(user);
         if (denglu!=null){
-            //向session中存入信息
-
 
             return true;
         }
@@ -38,11 +37,21 @@ public class UserServiceImp implements UserService {
        boolean denglu = mapper.zhuce(user);
        return denglu;
    }
-   public List<User> findall() throws IOException {
 
-       List<User> findall = mapper.findall();
-      return findall;
+    @Override
+    public User selectUser(String xid) {
 
+
+        User user = mapper.findbyid(xid);
+
+
+        return user;
+    }
+
+    @Override
+    public Boolean updateUser(User user) {
+
+        return mapper.updateById(user);
     }
 
 
