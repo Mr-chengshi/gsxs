@@ -33,7 +33,7 @@ public class UserServiceImp implements UserService {
     }
 
    public boolean register(User user) throws IOException {
-
+        user.setUsername("用户");
        boolean denglu = mapper.zhuce(user);
        return denglu;
    }

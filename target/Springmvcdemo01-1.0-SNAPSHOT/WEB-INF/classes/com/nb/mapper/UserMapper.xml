@@ -9,7 +9,7 @@
     </select>
 
     <insert id="zhuce" parameterType="user">
-        insert into user values (#{xid},#{password},#{sid})
+        insert into user(xid,password,sid,username) values (#{xid},#{password},#{sid},#{username})
     </insert>
 
     <select id="findall" resultType="user">

@@ -36,8 +36,10 @@ public class UserController {   //用来返回视图和数据
     @RequestMapping("/zhuce")
     private String zhuce(User user, HttpSession session)throws Exception{
         if (userservice.register(user)){
-            User user1 = userservice.selectUser(user.getUsername());
+            System.out.println(user);
+            User user1 = userservice.selectUser(user.getXid());
             session.setAttribute("user",user1);
+
             return "index";
         }else {
             return "register";
